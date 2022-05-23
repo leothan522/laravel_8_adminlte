@@ -19,7 +19,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text text-bold">nombre{{--<i class="fas fa-code"></i>--}}</span>
                         </div>
-                        <input type="text" class="form-control" wire:model.debounce.10000ms="nombre" name="nombre" placeholder="[string]">
+                        <input type="text" class="form-control" wire:model.defer="nombre" name="nombre" placeholder="[string]">
                         @error('nombre')
                         <span class="col-sm-12 text-sm text-bold text-danger">
                                     <i class="icon fas fa-exclamation-triangle"></i>
@@ -33,7 +33,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text text-bold">tabla_id{{--<i class="fas fa-code"></i>--}}</span>
                         </div>
-                        <input type="text" class="form-control" wire:model.debounce.10000ms="tabla_id" name="tabla_id" placeholder="[integer]">
+                        <input type="text" class="form-control" wire:model.defer="tabla_id" name="tabla_id" placeholder="[integer]">
                         @error('tabla_id')
                         <span class="col-sm-12 text-sm text-bold text-danger">
                                     <i class="icon fas fa-exclamation-triangle"></i>
@@ -48,7 +48,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text text-bold">valor{{--<i class="fas fa-code"></i>--}}</span>
                         </div>
-                        <input type="text" class="form-control" wire:model.debounce.10000ms="valor" name="valor" placeholder="[string]">
+                        <input type="text" class="form-control" wire:model.defer="valor" name="valor" placeholder="[string]">
                         @error('valor')
                         <span class="col-sm-12 text-sm text-bold text-danger">
                                     <i class="icon fas fa-exclamation-triangle"></i>

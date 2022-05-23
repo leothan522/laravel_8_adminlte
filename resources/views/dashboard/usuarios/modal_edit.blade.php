@@ -51,7 +51,7 @@
                                         </li>
                                         @if($user_password)
                                             <li class="list-group-item">
-                                                <b class="text-warning">Nueva Contraseña</b> <input type="text" wire:model.debounce.100000ms="user_password" class="form-control col-sm-4 form-control-sm float-right" />
+                                                <b class="text-warning">Nueva Contraseña</b> <input type="text" wire:model.defer="user_password" class="form-control col-sm-4 form-control-sm float-right" />
                                             </li>
                                         @endif
                                     </ul>
@@ -100,7 +100,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                                 </div>
-                                                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nombre y Apellido', 'wire:model.debounce.10000ms' => 'user_name']) !!}
+                                                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nombre y Apellido', 'wire:model.defer' => 'user_name']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -109,12 +109,12 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                                 </div>
-                                                {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email', 'wire:model.debounce.10000ms' => 'user_email']) !!}
+                                                {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email', 'wire:model.defer' => 'user_email']) !!}
                                                 @error('user_email')
                                                 <span class="col-sm-12 text-sm text-bold text-danger">
-                                                                        <i class="icon fas fa-exclamation-triangle"></i>
-                                                                        {{ $message }}
-                                                                    </span>
+                                                    <i class="icon fas fa-exclamation-triangle"></i>
+                                                    {{ $message }}
+                                                </span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -127,7 +127,7 @@
                                                     <span class="input-group-text"><i class="fas fa-user-cog"></i></span>
                                                 </div>
                                                 {{--{!! Form::select('role', role() , null, ['class' => 'custom-select', 'wire:model.debounce.10000ms' => 'user_role']) !!}--}}
-                                                <select name="role" class="custom-select" wire:model.debounce.10000000ms="user_role">
+                                                <select name="role" class="custom-select" wire:model.defer="user_role">
                                                     {{--<option value="{{  }}">Seleccione</option>--}}
                                                     <option value="0">Estandar</option>
                                                     @foreach($list_roles as $rol)

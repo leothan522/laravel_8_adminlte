@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Parametro;
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
@@ -45,7 +45,7 @@ class ParametrosComponent extends Component
     {
         $rules = [
             'nombre' => ['required', 'min:4', 'alpha_dash', Rule::unique('parametros')],
-            'tabla_id' => 'nullable|integer '
+            'tabla_id' => 'nullable|integer'
         ];
         $this->validate($rules);
         $parametro = new Parametro();
@@ -78,7 +78,7 @@ class ParametrosComponent extends Component
     {
         $rules = [
             'nombre' => ['required', 'min:4', 'alpha_dash', Rule::unique('parametros', 'nombre')->ignore($id)],
-            'tabla_id' => 'nullable|integer '
+            'tabla_id' => 'nullable|integer'
         ];
         $this->validate($rules);
         $parametro = Parametro::find($id);
@@ -119,6 +119,7 @@ class ParametrosComponent extends Component
         $parametro = Parametro::find($this->parametro_id);
         $parametro->delete();
         $this->parametro_id = null;
+        $this->limpiar();
         $this->alert(
             'success',
             'Parametro Eliminado'

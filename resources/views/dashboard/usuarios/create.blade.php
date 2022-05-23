@@ -22,7 +22,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
-                    {!! Form::text('name', null, ['class' => 'form-control', 'wire:model.debounce.100000ms' => 'name', 'placeholder' => 'Nombre y Apellido']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control', 'wire:model.defer' => 'name', 'placeholder' => 'Nombre y Apellido']) !!}
                     @error('name')
                     <span class="col-sm-12 text-sm text-bold text-danger">
                                     <i class="icon fas fa-exclamation-triangle"></i>
@@ -37,7 +37,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                     </div>
-                    {!! Form::email('email', null, ['class' => 'form-control', 'wire:model.debounce.100000ms' => 'email', 'placeholder' => 'Email']) !!}
+                    {!! Form::email('email', null, ['class' => 'form-control', 'wire:model.defer' => 'email', 'placeholder' => 'Email']) !!}
                     @error('email')
                     <span class="col-sm-12 text-sm text-bold text-danger">
                                     <i class="icon fas fa-exclamation-triangle"></i>
@@ -52,7 +52,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
                     </div>
-                    {!! Form::text('password', null, ['class' => 'form-control', 'wire:model.debounce.100000ms' => 'password', 'placeholder' => 'Contraseña']) !!}
+                    {!! Form::text('password', null, ['class' => 'form-control', 'wire:model.defer' => 'password', 'placeholder' => 'Contraseña']) !!}
                     <span class="input-group-append">
                                 <button type="button" wire:click="generarClave" class="btn btn-info btn-flat btn-sm text-sm">Generar!</button>
                             </span>
@@ -71,7 +71,7 @@
                         <span class="input-group-text"><i class="fas fa-user-cog"></i></span>
                     </div>
                     {{--{!! Form::select('role', $list_roles, null , ['class' => 'custom-select', 'wire:model.debounce.100000ms' => 'role', 'placeholder' => 'Seleccione']) !!}--}}
-                    <select name="role" class="custom-select" wire:model.debounce.10000ms="role">
+                    <select name="role" class="custom-select" wire:model.defer="role">
                         <option value="">Seleccione</option>
                         <option value="0">Estandar</option>
                         @foreach($list_roles as $rol)
