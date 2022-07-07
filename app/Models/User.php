@@ -11,7 +11,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -30,6 +30,7 @@ class User extends Authenticatable
         'password',
         'role',
         'estatus',
+        'roles_id',
         'permisos',
         'profile_photo_path'
     ];
@@ -85,7 +86,9 @@ class User extends Authenticatable
     public function scopeBuscar($query, $keyword)
     {
         return $query->where('name', 'LIKE', "%$keyword%")
-            ->orWhere('email', 'LIKE', "%$keyword%");
+            ->orWhere('email', 'LIKE', "%$keyword%")
+            ->orWhere('id', 'LIKE', "%$keyword%")
+            ;
     }
 
 

@@ -24,7 +24,7 @@ class UsuariosComponent extends Component
     ];
 
     public $name, $email, $password, $role, $busqueda;
-    public $user_id, $user_name, $user_email, $user_password, $user_role, $user_estatus, $user_fecha, $user_permisos, $user_path;
+    public $user_id, $user_name, $user_email, $user_password, $user_role, $user_role_id, $user_estatus, $user_fecha, $user_permisos, $user_path;
 
     public function mount(Request $request)
     {
@@ -35,7 +35,10 @@ class UsuariosComponent extends Component
 
     public function render()
     {
-        $users = User::buscar($this->busqueda)->orderBy('id', 'DESC')->paginate(30);
+        $users = User::buscar($this->busqueda)
+            ->orderBy('role', 'DESC')
+            ->orderBy('id', 'DESC')
+            ->paginate(30);
         if ($users->isEmpty()){
             verSweetAlert2("Busqueda sin resultados", 'toast', null, 'error');
         }
@@ -62,6 +65,7 @@ class UsuariosComponent extends Component
         $this->user_email = null;
         $this->user_password = null;
         $this->user_role = null;
+        $this->user_role_id = null;
         $this->user_estatus = null;
         $this->user_fecha = null;
         $this->user_permisos = null;
@@ -81,7 +85,13 @@ class UsuariosComponent extends Component
         $user = new User();
         $user->name = $this->name;
         $user->email = $this->email;
-        $user->role = $this->role;
+        if ($this->role > 1){
+            $user->role = 2;
+            $user->roles_id = $this->role;
+        }else{
+            $user->role = $this->role;
+            $user->roles_id = null;
+        }
         $user->password = Hash::make($this->password);
 
         $role = Parametro::where('tabla_id', '-1')->where('id', $this->role)->first();
@@ -103,7 +113,11 @@ class UsuariosComponent extends Component
         $this->user_id = $user->id;
         $this->user_name = $user->name;
         $this->user_email = $user->email;
-        $this->user_role = $user->role;
+        if ($user->roles_id) {
+            $this->user_role = $user->roles_id;
+        }else{
+            $this->user_role = $user->role;
+        }
         $this->user_estatus = $user->estatus;
         $this->user_fecha = $user->created_at;
         $this->user_path = $user->profile_photo_path;
@@ -120,14 +134,22 @@ class UsuariosComponent extends Component
         $user = User::find($id);
         $user->name = $this->user_name;
         $user->email = $this->user_email;
-        $user->role = $this->user_role;
-
+        //$user->role = $this->user_role;
+        if ($this->user_role > 1){
+            $user->role = 2;
+            $user->roles_id = $this->user_role;
+        }else{
+            $user->role = $this->user_role;
+            $user->roles_id = null;
+        }
         $role = Parametro::where('tabla_id', '-1')->where('id', $this->user_role)->first();
         if ($role){
             $user->permisos = $role->valor;
         }
 
-        $user->save();
+        $user->update();
+
+        $this->edit($user->id);
         $this->alert(
             'success',
             'Usuario Actualizado'

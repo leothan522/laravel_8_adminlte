@@ -15,12 +15,16 @@
         <tbody>
             @if(!$users->isEmpty())
                 @foreach($users as $user)
+                    @if($user->role == 100 && auth()->user()->role != 100) @continue @endif
                     {{--<th scope="row" class="text-center">{{ $user->id }}</th>--}}
                     <th class="text-center">{!! iconoPlataforma($user->plataforma) !!}</th>
                     <td>{{ ucwords($user->name) }}</td>
                     <td>{{ strtolower($user->email) }}</td>
                     <td class="text-center">{{ role($user->role) }}</td>
-                    <td class="text-center">{!! estatusUsuario($user->estatus, true) !!}</td>
+                    <td class="text-center">
+                        {!! estatusUsuario($user->estatus, true) !!}
+                        <span class="text-sm"> ID: {{ $user->id }}</span>
+                    </td>
                     <td class="text-right">{{ haceCuanto($user->created_at)  }}</td>
                     <td class="justify-content-end">
                         <div class="btn-group">
