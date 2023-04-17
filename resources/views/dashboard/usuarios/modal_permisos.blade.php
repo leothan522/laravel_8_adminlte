@@ -1,4 +1,4 @@
-<div wire:ignore.self class="modal fade" id="modal-lg-permisos">
+<div wire:ignore.self class="modal fade" id="modal-lg-permisos" xmlns:wire="http://www.w3.org/1999/xhtml">
     <div class="modal-dialog modal-lg">
         <div class="modal-content fondo">
             <div class="modal-header">

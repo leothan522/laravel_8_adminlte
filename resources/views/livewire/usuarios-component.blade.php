@@ -2,7 +2,7 @@
     {{-- Do your work, then step back. --}}
     <div class="row justify-content-center">
 
-        @if(leerJson(Auth::user()->permisos, 'usuarios.create') || Auth::user()->role == 1 || Auth::user()->role == 100)
+        @if(comprobarPermisos('usuarios.create'))
             @include('dashboard.usuarios.create')
         @endif
 
@@ -27,7 +27,7 @@
                                 <i class="fas fa-list"></i> Ver Todos
                             </a>
 
-                            @if(leerJson(Auth::user()->permisos, 'usuarios.excel') || Auth::user()->role == 1 || Auth::user()->role == 100)
+                            @if(comprobarPermisos('usuarios.excel'))
                                 <a href="{{ route('usuarios.excel', $busqueda) }}"
                                    class="btn btn-tool text-success swalDefaultInfo" {{--target="_blank"--}}>
                                     <i class="fas fa-file-excel"></i> <i class="fas fa-download"></i>
@@ -41,7 +41,7 @@
 
                         @else
 
-                            @if(leerJson(Auth::user()->permisos, 'usuarios.excel') || Auth::user()->role == 1 || Auth::user()->role == 100)
+                            @if(comprobarPermisos('usuarios.excel'))
                                 <a href="{{ route('usuarios.excel') }}"
                                    class="btn btn-tool text-success swalDefaultInfo" {{--target="_blank"--}}>
                                     <i class="fas fa-file-excel"></i> <i class="fas fa-download"></i>

@@ -10,17 +10,12 @@
             <div class="modal-body">
 
 
-                {{--@if(!$user_id)
-                    <div class="overlay">
-                        <i class="fas fa-2x fa-sync-alt"></i>
-                    </div>
-                @endif
-                --}}
-                    <div wire:loading>
+
+                    {{--<div wire:loading>
                         <div class="overlay">
                             <i class="fas fa-2x fa-sync-alt"></i>
                         </div>
-                    </div>
+                    </div>--}}
 
                     <div class="row justify-content-center">
                     <div class="row col-md-11">
@@ -170,6 +165,7 @@
             <div class="modal-footer justify-content-end">
                 <button type="button" wire:click="limpiar()" class="btn btn-default btn-sm" data-dismiss="modal">{{ __('Close') }}</button>
             </div>
+            {!! verSpinner() !!}
         </div>
         <!-- /.modal-content -->
     </div>

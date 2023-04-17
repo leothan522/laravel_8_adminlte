@@ -225,6 +225,7 @@ class UsuariosComponent extends Component
         }
 
         $user->permisos = $permisos;
+        $this->user_permisos = $user->permisos;
         $user->update();
 
     }

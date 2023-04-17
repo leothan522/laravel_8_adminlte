@@ -1,4 +1,4 @@
-<div class="card card-gray-dark collapsed-card">
+<div class="card card-gray-dark collapsed-card" xmlns:wire="http://www.w3.org/1999/xhtml">
     <div class="card-header">
         <h3 class="card-title">Usuarios</h3>
 

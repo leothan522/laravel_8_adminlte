@@ -1,4 +1,4 @@
-<div class="col-md-3">
+<div class="col-md-3" xmlns:wire="http://www.w3.org/1999/xhtml">
 
     <div class="card card-gray-dark" style="height: inherit; width: inherit; transition: all 0.15s ease 0s;">
         <div class="card-header">
@@ -25,9 +25,9 @@
                     {!! Form::text('name', null, ['class' => 'form-control', 'wire:model.defer' => 'name', 'placeholder' => 'Nombre y Apellido']) !!}
                     @error('name')
                     <span class="col-sm-12 text-sm text-bold text-danger">
-                                    <i class="icon fas fa-exclamation-triangle"></i>
-                                    {{ $message }}
-                                </span>
+                        <i class="icon fas fa-exclamation-triangle"></i>
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
             </div>
@@ -40,9 +40,9 @@
                     {!! Form::email('email', null, ['class' => 'form-control', 'wire:model.defer' => 'email', 'placeholder' => 'Email']) !!}
                     @error('email')
                     <span class="col-sm-12 text-sm text-bold text-danger">
-                                    <i class="icon fas fa-exclamation-triangle"></i>
-                                    {{ $message }}
-                                </span>
+                        <i class="icon fas fa-exclamation-triangle"></i>
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
             </div>
@@ -54,13 +54,13 @@
                     </div>
                     {!! Form::text('password', null, ['class' => 'form-control', 'wire:model.defer' => 'password', 'placeholder' => 'Contraseña']) !!}
                     <span class="input-group-append">
-                                <button type="button" wire:click="generarClave" class="btn btn-info btn-flat btn-sm text-sm">Generar!</button>
-                            </span>
+                        <button type="button" wire:click="generarClave" class="btn btn-info btn-flat btn-sm text-sm">Generar!</button>
+                    </span>
                     @error('password')
                     <span class="col-sm-12 text-sm text-bold text-danger">
-                                    <i class="icon fas fa-exclamation-triangle"></i>
-                                    {{ $message }}
-                                </span>
+                        <i class="icon fas fa-exclamation-triangle"></i>
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
             </div>
@@ -84,9 +84,9 @@
 
                     @error('role')
                     <span class="col-sm-12 text-sm text-bold text-danger">
-                                    <i class="icon fas fa-exclamation-triangle"></i>
-                                    {{ $message }}
-                                </span>
+                        <i class="icon fas fa-exclamation-triangle"></i>
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
             </div>
@@ -100,11 +100,12 @@
 
         </div>
         <!-- /.card-body -->
-        <div class="overlay-wrapper" wire:loading>
+        {{--<div class="overlay-wrapper" wire:loading>
             <div class="overlay">
                 <i class="fas fa-2x fa-sync-alt"></i>
             </div>
-        </div>
+        </div>--}}
+        {!! verSpinner() !!}
     </div>
 
 </div>
